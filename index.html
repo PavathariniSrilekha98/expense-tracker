@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Monthly Expense Tracker</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+padding:40px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+}
+
+.card{
+background:#f8f9fc;
+padding:15px;
+border-radius:8px;
+margin-bottom:15px;
+}
+
+input,select,button{
+width:100%;
+padding:10px;
+margin-top:6px;
+margin-bottom:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+background:#4e73df;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+button:hover{
+background:#2e59d9;
+}
+
+ul{
+padding:0;
+max-height:200px;
+overflow-y:auto;
+}
+
+li{
+list-style:none;
+padding:10px;
+background:#f1f3f8;
+margin-bottom:6px;
+border-radius:6px;
+font-size:14px;
+position:relative;
+transition:0.3s;
+}
+
+/* Small X button */
+
+li button{
+position:absolute;
+top:5px;
+right:8px;
+background:none;
+border:none;
+color:#555;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+padding:0;
+}
+
+li button:hover{
+color:red;
+}
+
+/* Red highlight before delete */
+
+.removing{
+background:#ffcccc !important;
+}
+
+.summary{
+display:flex;
+justify-content:space-between;
+font-weight:bold;
+margin-top:10px;
+}
+
+.chart-container{
+width:250px;
+margin:20px auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Monthly Expense Tracker</h2>
+
+<div class="card">
+
+<h3>Salary</h3>
+
+<input type="number" id="salary" placeholder="Enter monthly salary">
+
+<button onclick="saveSalary()">Save Salary</button>
+
+</div>
+
+<div class="card">
+
+<h3>Add Expense</h3>
+
+<input type="date" id="date">
+
+<select id="category">
+<option>Food</option>
+<option>Travel</option>
+<option>Bills</option>
+<option>Shopping</option>
+<option>Other</option>
+</select>
+
+<input type="text" id="name" placeholder="Description">
+
+<input type="number" id="amount" placeholder="Amount">
+
+<button onclick="addExpense()">Add Expense</button>
+
+</div>
+
+<div class="card">
+
+<h3>Expenses</h3>
+
+<ul id="list"></ul>
+
+<div class="summary">
+<div>Total: ₹<span id="total">0</span></div>
+<div>Balance: ₹<span id="balance">0</span></div>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3 style="text-align:center">Expense Chart</h3>
+
+<div class="chart-container">
+<canvas id="chart"></canvas>
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
